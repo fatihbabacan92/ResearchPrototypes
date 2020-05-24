@@ -1,6 +1,9 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Xceed.Document.NET;
 using Xceed.Words.NET;
 
@@ -23,6 +26,7 @@ namespace XceedWords
             string originalFilename = Path.GetFileNameWithoutExtension(filename);
             var originalFile = Path.Combine(desktopPath, @"WordFile\" + originalFilename + "-v1.docx");
             System.IO.File.Copy(filename, originalFile);
+
             //Load Document -- DocX.Create() for creating new document
             using var document = DocX.Load(filename);
 
@@ -33,6 +37,17 @@ namespace XceedWords
             string title = "This is the Ai title";
             string correctedTitle = "This is the AI Title";
             document.ReplaceText(title, correctedTitle);
+
+            //Find Title Paragraph
+            var titleParagraph = document.Paragraphs.Where(p => p.Text.Equals(correctedTitle)).First();
+
+            //Apply Format Rules
+            titleParagraph.Bold(true);
+            titleParagraph.FontSize(64d);
+            titleParagraph.Color(Color.Black);
+
+            //Misc.
+            document.PageLayout.Orientation = Orientation.Portrait;
 
             //Save Documents
             document.SaveAs(filename);
