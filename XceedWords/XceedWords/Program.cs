@@ -34,6 +34,10 @@ namespace XceedWords
             string correctedTitle = "This is the AI Title";
             document.ReplaceText(title, correctedTitle);
 
+            //Save Documents
+            document.SaveAs(filename);
+            Console.WriteLine("Done");
+            Console.ReadLine();
         }
     }
 }
