@@ -24,11 +24,15 @@ namespace XceedWords
             var originalFile = Path.Combine(desktopPath, @"WordFile\" + originalFilename + "-v1.docx");
             System.IO.File.Copy(filename, originalFile);
             //Load Document -- DocX.Create() for creating new document
-            var document = DocX.Load(filename);
+            using var document = DocX.Load(filename);
 
             //Set Default Font to Times New Roman, 12px, Black -- Useful when inserting new paragraphs
             document.SetDefaultFont(new Font("Times New Roman"), 12d, Color.Black);
 
+            //Replace Title Text
+            string title = "This is the Ai title";
+            string correctedTitle = "This is the AI Title";
+            document.ReplaceText(title, correctedTitle);
 
         }
     }
