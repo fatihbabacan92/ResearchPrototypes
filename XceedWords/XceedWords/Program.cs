@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.IO;
 using Xceed.Document.NET;
@@ -13,10 +13,16 @@ namespace XceedWords
             //find and replace text
             //Apply format rules
 
-            //Find File
-            string filename = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            filename = Path.Combine(filename + @"\WordFile\test.docx");
+            Console.WriteLine("Processing document");
 
+            //Find File from Desktop/WordFile
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filename = Path.Combine(desktopPath + @"\WordFile\test.docx");
+
+            //Save Original File
+            string originalFilename = Path.GetFileNameWithoutExtension(filename);
+            var originalFile = Path.Combine(desktopPath, @"WordFile\" + originalFilename + "-v1.docx");
+            System.IO.File.Copy(filename, originalFile);
             //Load Document -- DocX.Create() for creating new document
             var document = DocX.Load(filename);
 
