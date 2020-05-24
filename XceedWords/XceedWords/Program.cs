@@ -26,7 +26,7 @@ namespace XceedWords
             //Load Document -- DocX.Create() for creating new document
             var document = DocX.Load(filename);
 
-            //Set Default Font to Times New Roman, 12px, Black
+            //Set Default Font to Times New Roman, 12px, Black -- Useful when inserting new paragraphs
             document.SetDefaultFont(new Font("Times New Roman"), 12d, Color.Black);
 
 
