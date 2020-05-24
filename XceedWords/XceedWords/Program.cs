@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.IO;
 
 namespace XceedWords
 {
@@ -7,6 +8,9 @@ namespace XceedWords
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            //Find File
+            string filename = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            filename = Path.Combine(filename + @"\WordFile\test.docx");
         }
     }
 }
