@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using Xceed.Document.NET;
+using Xceed.Words.NET;
 
 namespace XceedWords
 {
@@ -11,6 +13,8 @@ namespace XceedWords
             //Find File
             string filename = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             filename = Path.Combine(filename + @"\WordFile\test.docx");
+            //Load Document -- DocX.Create() for creating new document
+            var document = DocX.Load(filename);
         }
     }
 }
