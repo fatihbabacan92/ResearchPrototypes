@@ -39,6 +39,20 @@ namespace OpenXML
                     titleParagraph = p;
                 }
             }
+
+            //Replace Title Text
+            string correctedTitle = "A Method to Work with MRI Devices";
+            foreach (Run r in titleParagraph.Elements<Run>())
+            {
+                foreach(Text t in r.Elements<Text>())
+                {
+                    t.Text = "";
+                }
+            }
+            Run run = titleParagraph.AppendChild(new Run());
+            run.AppendChild(new Text(correctedTitle));
+
+
             //Close and Save File
             doc.Save();
             doc.Close();
