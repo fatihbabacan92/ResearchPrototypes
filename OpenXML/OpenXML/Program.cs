@@ -39,6 +39,12 @@ namespace OpenXML
                     titleParagraph = p;
                 }
             }
+            //Close and Save File
+            doc.Save();
+            doc.Close();
+
+            Console.WriteLine("Done");
+            Console.ReadLine();
         }
     }
 }
