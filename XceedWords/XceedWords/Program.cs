@@ -45,6 +45,11 @@ namespace XceedWords
             titleParagraph.Bold(true);
             titleParagraph.FontSize(64d);
             titleParagraph.Color(Color.Black);
+            titleParagraph.Alignment = Alignment.center;
+            titleParagraph.IndentationBefore = 5;
+            titleParagraph.IndentationAfter = 5;
+            titleParagraph.SpacingAfter(12);
+            titleParagraph.SpacingBefore(0);
 
             //Misc.
             document.PageLayout.Orientation = Orientation.Portrait;
