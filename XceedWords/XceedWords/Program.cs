@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Xceed.Document.NET;
 using Xceed.Words.NET;
@@ -42,14 +43,32 @@ namespace XceedWords
             var titleParagraph = document.Paragraphs.Where(p => p.Text.Equals(correctedTitle)).First();
 
             //Apply Format Rules
+            Font times = new Font("Times New Roman");
+            titleParagraph.Font(times);
+            titleParagraph.FontSize(15);
             titleParagraph.Bold(true);
-            titleParagraph.FontSize(64d);
+            titleParagraph.Bold(true);
+            titleParagraph.UnderlineStyle(UnderlineStyle.none);
+            titleParagraph.Italic(false);
             titleParagraph.Color(Color.Black);
+
             titleParagraph.Alignment = Alignment.center;
-            titleParagraph.IndentationBefore = 5;
-            titleParagraph.IndentationAfter = 5;
+            titleParagraph.IndentationBefore = 0;
+            titleParagraph.IndentationAfter = 0;
             titleParagraph.SpacingAfter(12);
-            titleParagraph.SpacingBefore(0);
+            titleParagraph.SetLineSpacing(LineSpacingType.Line, 17);
+            titleParagraph.KeepWithNextParagraph(false);
+            titleParagraph.KeepLinesTogether(false);
+            titleParagraph.IndentationFirstLine = 0;
+
+            //Add table
+            var t = document.AddTable(2, 2);
+            t.Design = TableDesign.ColorfulListAccent1;
+            t.Alignment = Alignment.center;
+            t.Rows[0].Cells[0].Paragraphs[0].Append("Fatih");
+            t.Rows[0].Cells[1].Paragraphs[0].Append("18/20");
+            t.Rows[1].Cells[0].Paragraphs[0].Append("Kevin");
+            t.Rows[1].Cells[1].Paragraphs[0].Append("10/20");
 
             //Misc.
             document.PageLayout.Orientation = Orientation.Portrait;

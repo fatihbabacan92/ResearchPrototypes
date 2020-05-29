@@ -153,7 +153,7 @@ namespace OpenXML
             Color color1 = new Color() { Val = "000000" };
             RunFonts font1 = new RunFonts() { Ascii = "Times New Roman" };
             // Specify a 12 point size.
-            FontSize fontSize1 = new FontSize() { Val = "64" };
+            FontSize fontSize1 = new FontSize() { Val = "30" };
 
             styleRunProperties1.Append(bold1);
             styleRunProperties1.Append(color1);
