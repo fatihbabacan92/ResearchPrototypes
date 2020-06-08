@@ -84,6 +84,14 @@ namespace XceedWords
             abstractParagraph.Bold(false);
 
             //Add table
+            var t = document.AddTable(2, 2);
+            t.Design = TableDesign.ColorfulListAccent1;
+            t.Alignment = Alignment.center;
+            t.Rows[0].Cells[0].Paragraphs[0].Append("Name");
+            t.Rows[0].Cells[1].Paragraphs[0].Append("Results");
+            t.Rows[1].Cells[0].Paragraphs[0].Append("Kevin");
+            t.Rows[1].Cells[1].Paragraphs[0].Append("9/20");
+            abstractParagraph.InsertTableAfterSelf(t);
 
 
             //Misc.
